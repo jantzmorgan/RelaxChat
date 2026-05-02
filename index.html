@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title>RelaxChat</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+	<div class="app">
+
+		<aside class="serverPanel">
+
+			<button class="logoBubble serverButton active" data-channel="general" title="General Chat">
+				RC
+			</button>
+
+			<button class="serverButton" data-channel="gaming" title="Gaming Chat">
+				<span class="serverIcon">🎮</span>
+				<span class="serverLabel">Games</span>
+			</button>
+
+			<button class="serverButton" data-channel="clips" title="Clips Chat">
+				<span class="serverIcon">🎬</span>
+				<span class="serverLabel">Clips</span>
+			</button>
+
+			<button class="serverButton" data-channel="random" title="Random Chat">
+				<span class="serverIcon">🎲</span>
+				<span class="serverLabel">Random</span>
+			</button>
+
+		</aside>
+
+		<aside class="channelPanel">
+
+			<div class="serverNameBox">
+				<label for="serverNameInput">Server name</label>
+				<input id="serverNameInput" placeholder="RelaxChat Server">
+			</div>
+
+			<div class="channelTitle">Text Channels</div>
+
+			<button class="channel active" data-channel="general"><span>#</span> general</button>
+			<button class="channel" data-channel="gaming"><span>#</span> gaming</button>
+			<button class="channel" data-channel="clips"><span>#</span> clips</button>
+			<button class="channel" data-channel="random"><span>#</span> random</button>
+
+			<div class="miniInfoBox">
+				<strong>Live Demo</strong>
+				<p>Messages are now coming from your AWS server.</p>
+			</div>
+
+		</aside>
+
+		<main class="chatPanel">
+
+			<header class="chatHeader">
+				<div>
+					<h1 id="chatTitle"># general</h1>
+					<p id="chatSubtitle">Connecting to RelaxChat...</p>
+				</div>
+
+				<button id="clearBtn" class="clearBtn">Clear</button>
+			</header>
+
+			<section id="messages" class="messages">
+				<div class="welcomeMessage">
+					<h2>Welcome to RelaxChat</h2>
+					<p>Connecting to your server...</p>
+				</div>
+			</section>
+
+			<footer class="messageBar">
+				<input id="displayNameInput" placeholder="Your name">
+				<input id="messageInput" placeholder="Message #general">
+				<button id="sendBtn">Send</button>
+			</footer>
+
+		</main>
+
+	</div>
+
+	<script src="http://18.218.108.184:3000/socket.io/socket.io.js"></script>
+	<script src="script.js"></script>
+</body>
+
+</html>
