@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title>RelaxChat</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="style.css?v=70">
+</head>
+
+<body>
+
+	<div id="authScreen" class="lockScreen">
+		<div class="lockCard">
+			<div class="lockLogo">RC</div>
+			<h1>RelaxChat</h1>
+			<p id="authSubtitle">Login or create your account</p>
+
+			<input id="authUsernameInput" type="text" placeholder="Username">
+			<input id="authPasswordInput" type="password" placeholder="Password">
+
+			<button id="loginBtn">Login</button>
+			<button id="signupBtn" class="secondaryAuthBtn">Create Account</button>
+
+			<div id="authError" class="lockError"></div>
+		</div>
+	</div>
+
+	<div id="startScreen" class="lockScreen" style="display: none;">
+		<div class="lockCard">
+			<div class="lockLogo">RC</div>
+			<h1>Welcome Back</h1>
+			<p id="welcomeUserText">Ready to enter RelaxChat?</p>
+
+			<button id="startSessionBtn">Enter RelaxChat</button>
+			<button id="logoutBtn" class="secondaryAuthBtn">Logout</button>
+
+			<div id="startError" class="lockError"></div>
+		</div>
+	</div>
+
+	<div class="app" id="app" style="display: none;">
+
+		<aside class="brandPanel">
+			<div class="logoBubble">RC</div>
+
+			<button id="voiceBtn" class="voiceBtn" title="Join or leave voice">
+				🎤
+			</button>
+
+			<button id="soundboardToggleBtn" class="voiceBtn" title="Open soundboard">
+				🔊
+			</button>
+
+			<button id="roomsBtn" class="voiceBtn" title="Rooms">
+				💬
+			</button>
+
+			<button id="settingsBtn" class="voiceBtn" title="Settings">
+				⚙️
+			</button>
+		</aside>
+
+		<main class="chatPanel">
+
+			<header class="chatHeader">
+				<div class="chatInfo">
+					<label for="chatNameInput">Chat name</label>
+					<input id="chatNameInput" placeholder="RelaxChat">
+					<p id="chatStatus">Connecting...</p>
+				</div>
+			</header>
+
+			<section class="voicePanel">
+				<div>
+					<strong>Voice Chat</strong>
+					<p id="voiceStatus">Not in voice</p>
+
+					<button id="audioUnlockBtn" class="audioUnlockBtn">
+						Enable Audio
+					</button>
+
+					<button id="muteBtn" class="audioUnlockBtn hidden">
+						Mute
+					</button>
+				</div>
+
+				<div id="voiceUsers" class="voiceUsers"></div>
+			</section>
+
+			<section id="messages" class="messages">
+				<div class="welcomeMessage">
+					<h2>RelaxChat</h2>
+					<p>Connecting to your server...</p>
+				</div>
+			</section>
+
+			<div id="typingIndicator" class="typing-indicator"></div>
+
+			<footer class="messageBar">
+				<input id="displayNameInput" placeholder="Your name">
+
+				<div class="sendRow">
+					<input id="messageInput" placeholder="Type a message...">
+					<button id="sendBtn">Send</button>
+				</div>
+			</footer>
+
+		</main>
+
+	</div>
+
+	<div id="soundboardDrawer" class="soundboardDrawer hidden">
+		<div class="soundboardCard">
+			<div class="soundboardTop">
+				<div>
+					<strong>Soundboard</strong>
+					<p>Upload sounds and play them for everyone.</p>
+				</div>
+
+				<button id="closeSoundboardBtn" class="closeSoundboardBtn">×</button>
+			</div>
+
+			<button id="enableSoundboardBtn" class="audioUnlockBtn">
+				Enable Soundboard
+			</button>
+
+			<label class="uploadSoundBtn">
+				Upload Sound
+				<input id="soundUploadInput" type="file" accept="*/*">
+			</label>
+
+			<div class="soundVolumeRow">
+				<label for="soundVolumeSlider">Volume</label>
+				<input id="soundVolumeSlider" type="range" min="0" max="100" value="80">
+				<span id="soundVolumeText">80%</span>
+			</div>
+
+			<div id="soundList" class="soundList">
+				<span class="emptySounds">No sounds yet.</span>
+			</div>
+		</div>
+	</div>
+
+	<div id="settingsDrawer" class="soundboardDrawer hidden">
+		<div class="soundboardCard settingsCard">
+
+			<div class="soundboardTop">
+				<div>
+					<strong>Settings</strong>
+					<p>Manage this chat room.</p>
+				</div>
+
+				<button id="closeSettingsBtn" class="closeSoundboardBtn">×</button>
+			</div>
+
+			<div class="settingsActions">
+				<button id="clearBtn" class="settingsActionBtn dangerSettingBtn">
+					Clear Messages
+				</button>
+
+				<button id="setBgBtn" class="settingsActionBtn">
+					Change Background
+				</button>
+
+				<button id="logoutBtnMain" class="settingsActionBtn">
+					Logout
+				</button>
+			</div>
+
+		</div>
+	</div>
+
+	<div id="roomsDrawer" class="soundboardDrawer hidden">
+		<div class="soundboardCard roomsCard">
+
+			<div class="soundboardTop">
+				<div>
+					<strong>Rooms</strong>
+					<p>Pick a chat or create a private one.</p>
+				</div>
+
+				<button id="closeRoomsBtn" class="closeSoundboardBtn">×</button>
+			</div>
+
+			<div class="roomsSection">
+				<h3>Your Chats</h3>
+				<div id="roomsList" class="roomsList">
+					<span class="emptySounds">No rooms yet.</span>
+				</div>
+			</div>
+
+			<div class="roomsSection">
+				<h3>Create Room</h3>
+				<input id="newRoomName" placeholder="Room name">
+				<input id="newRoomPassword" placeholder="Room password" type="password">
+				<button id="createRoomBtn">Create Room</button>
+			</div>
+
+			<div class="roomsSection">
+				<h3>Join Room</h3>
+				<input id="joinRoomId" placeholder="Room name">
+				<input id="joinRoomPassword" placeholder="Room password" type="password">
+				<button id="joinRoomBtn">Join Room</button>
+			</div>
+
+		</div>
+	</div>
+
+	<div id="remoteAudioBox"></div>
+
+	<input type="file" id="bgUpload" accept="image/*" style="display:none;">
+
+	<div id="reactionPopup" class="reaction-popup hidden" aria-hidden="true">
+		<button type="button" class="popup-reaction-btn" data-emoji="😂">😂</button>
+		<button type="button" class="popup-reaction-btn" data-emoji="❤️">❤️</button>
+		<button type="button" class="popup-reaction-btn" data-emoji="🔥">🔥</button>
+		<button type="button" class="popup-reaction-btn" data-emoji="👍">👍</button>
+		<button type="button" class="popup-reaction-btn" data-emoji="😭">😭</button>
+	</div>
+
+	<script src="https://cdn.socket.io/4.7.5/socket.io.min.js"></script>
+	<script src="script.js?v=70"></script>
+</body>
+
+</html>
