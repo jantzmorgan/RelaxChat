@@ -1,0 +1,30 @@
+{
+	"name": "RelaxChat",
+	"short_name": "RelaxChat",
+	"description": "Private chat, voice, streams, soundboard, and rooms.",
+	"start_url": "./index.html",
+	"scope": "./",
+	"display": "standalone",
+	"orientation": "portrait",
+	"background_color": "#e9f7fc",
+	"theme_color": "#2f6b86",
+	"icons": [{
+			"src": "icon-192.png",
+			"sizes": "192x192",
+			"type": "image/png",
+			"purpose": "any"
+		},
+		{
+			"src": "icon-512.png",
+			"sizes": "512x512",
+			"type": "image/png",
+			"purpose": "any"
+		},
+		{
+			"src": "apple-touch-icon.png",
+			"sizes": "180x180",
+			"type": "image/png",
+			"purpose": "any"
+		}
+	]
+}
